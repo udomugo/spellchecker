@@ -1,9 +1,9 @@
 
-#Ripl Spell-checker v1
+# Ripl Spell-checker v1
 
 To complete the new Ripl spell-checking software, we need you to create its brain. The requirements for the 1st version are listed below. If you have any questions about any part of the task, please let us know.
 
-###Requirements
+### Requirements
 
 Using a language of your choice, write a function that implements the following pseudo-code signature:
 
@@ -22,6 +22,6 @@ The list of correct word spellings are in the dictionary file that is in this re
 
 If you have any questions, please let us know.
 
-###Packaging and Delivery
+### Packaging and Delivery
 
 Please send the source code in a ZIP file, or similar format. If you use any libraries, please ensure we can get the exact versions you used. Please tell us anything that you think we should know about compiling or using your code.
