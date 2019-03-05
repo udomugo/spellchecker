@@ -10,15 +10,15 @@ Using a language of your choice, write a function that implements the following 
 `String checkWord( String wordToCheck )`
 
 The function should behave as follows:
-* It will perform two corrections on the incoming word and then return the corrected word:
+* It will perform two types of corrections on the incoming word and then return the corrected word:
     * It fixes bad casing.
         * “england” → “England”
     * It removes invalid repeating characters.
         * “tabble” → “table”
-* If the incoming word is already correct, the function should return the word.
+* If the incoming word is already correct, the function should return the original word.
 * If no correction can be found, the function should return the string “No Correction Found”.
 
-The list of correct word spellings are in the dictionary file that is in this repo.
+The list of correct word spellings are in the dictionary file that is in this repo. You don't need to perform corrections on any words not in this dictionary.
 
 If you have any questions, please let us know.
 
