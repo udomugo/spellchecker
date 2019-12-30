@@ -12,7 +12,7 @@ Using a language of your choice, write a function that implements the following 
 The function should behave as follows:
 * It will correct two kinds of errors on the incoming word and then return the corrected word:
     * It fixes bad casing.
-        * “england” → “England”
+        * “wetumpka” → “Wetumpka”
         * “paRNAssus” → “Parnassus”
     * It removes invalid repeating characters.
         * “tabble” → “table”
