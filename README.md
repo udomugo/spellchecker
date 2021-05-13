@@ -1,4 +1,6 @@
+James Morren - Application Homework Submission
 
+Spec:
 # Ripl Spell-checker
 
 To complete the new Ripl spell-checking software, we need you to create its brain. The requirements for this version are listed below. If you have any questions about any part of the task, please let us know.
@@ -27,3 +29,19 @@ If you have any questions, please let us know.
 ### Packaging and Delivery
 
 Please send the source code in a ZIP file, or similar format. If you use any libraries, please ensure we can get the exact versions you used. Please tell us anything that you think we should know about compiling or using your code.
+
+
+Planning - Cases to cover:
+	* When to Capitalize the first letter
+
+Planning - What to return (rough flow control):
+	* Correctly spelled words:
+	* Correctly spelled words, incorrect capitalization
+	   - First char needs to be capitalized
+	   - Any char following the first char needs to be lower case
+	   - The following two cases are both true
+	* Incorrectly spelled words:
+	   - Missing chars need to be added
+	   - Additional chars need to be removed
+	   - The following two cases are both true
+
