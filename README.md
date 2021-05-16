@@ -45,3 +45,6 @@ Planning - What to return (rough flow control):
 	   - Additional chars need to be removed
 	   - The following two cases are both true
 
+Running test suite:
+	At project root directory i.e. ':/>spellchecker-homework$' run pytest-3
+
