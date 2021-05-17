@@ -31,10 +31,11 @@ If you have any questions, please let us know.
 Please send the source code in a ZIP file, or similar format. If you use any libraries, please ensure we can get the exact versions you used. Please tell us anything that you think we should know about compiling or using your code.
 
 
-# Planning - Cases to cover:
+## Planning - Cases to cover:
 	* When to Capitalize the first letter
+	* How to decide there are erroious additional characters
 
-# Planning - What to return (rough flow control):
+### Planning - What to return (rough flow control):
 * Correctly spelled words
 * Correctly spelled words, incorrect capitalization
 	* First char needs to be capitalized
@@ -45,6 +46,7 @@ Please send the source code in a ZIP file, or similar format. If you use any lib
 	* Additional chars need to be removed
 	* The following two cases are both true
 
-# Running test suite:
+### Running test suite:
 	At project root directory i.e. ':/>spellchecker-homework$' run pytest-3
+	Uncompressed words file should be placed in the 'wordfiles' folder in the root directory of the project.
 
