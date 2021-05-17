@@ -1,7 +1,8 @@
 # built using python 3.8.5
 import os
+import re
 from pathlib import Path
-from warnings import resetwarnings
+#from warnings import resetwarnings
 #import sys
 
 class Spellchecker():
@@ -20,12 +21,13 @@ class Spellchecker():
         file = wordfiles_path / wordFile
         if not file.is_file():
             raise WordFileNotFoundException("Word file " + wordFile + " can not be found")
-        self._words = open(file)
+        self._words = open(file).read()
     
     # create word list from file object
     def create_wordList(self):
-        words_string = self._words.read()
-        self._wordList = words_string.splitlines()
+        #words_string = self._words.read()
+        #self._wordList = words_string.splitlines()
+        self._wordList = self._words.splitlines()
 
     # getter of word list
     def view_wordList(self):
@@ -44,63 +46,25 @@ class Spellchecker():
         proper_noun = wordToCheck[0].upper() + wordToCheck[1:].lower()
         if proper_noun in self._wordList:
             return proper_noun
-        
+
         possible_dups = self.checkDupChars(wordToCheck)
         if possible_dups[0]:
-            for w in possible_dups[1]:
-                result = self.checkWord(w)
-                if result != "No Correction Found":
-                    return result
+            return self.checkWord(possible_dups[1])
 
         return "No Correction Found"
-    
-    def checkDupChars(self, charsToCheck: 'str') -> 'tuple[bool, list[str]]':
-        seen = dict()
-        # counting the number of 
-        last_char = ''
+
+    def checkDupChars(self, charsToCheck: 'str') -> 'tuple[bool, str]':
+        prefix = r''
         dups = False
         for c in charsToCheck:
-            if c == last_char:
-                chars_seen = seen.keys()
-                if c in chars_seen:
-                    seen.update({c: seen.get(c) + 1})
-                    continue
-                seen.update({c: 2})
-            last_char = c
-        
-        possible_fixes = list()
-        chars_seen = seen.keys()
-        for k in chars_seen:
-            if seen.get(k) > 1:
-                dups = True
-                remove_char = charsToCheck.partition(k)
-                possible_fixes.append(remove_char[0] + remove_char[2])
-
-        return (dups, possible_fixes)
-        
+            test_prefix = prefix + c
+            match_results = re.findall(test_prefix + r'.*', self._words)
+            if len(match_results) == 0:
+                if prefix[-1] == c:
+                    dups = True
+                continue
+            prefix = test_prefix[:]
+        return (dups, prefix)
     
 class WordFileNotFoundException(Exception):
         ''' Exception raised when spellchecker can not find supplied word list '''
-                
-
-
-
-''' Prototyping checkWord function '''
-# dev_wrd_lst_short = ['hello', 'goodbye', 'world', 'sea', 'moon', 'universe', 'Elvis']
-
-# wrd_lst = dev_wrd_lst_short
-
-# wrd_lst.sort()
-
-# def checkWord_prototype(wordToCheck: str) -> str:
-#     result = ''
-#     #lowerCase = wordToCheck.lower()
-#     if wordToCheck in wrd_lst:
-#         return wordToCheck
-#     if wordToCheck.lower() in wrd_lst:
-#         return wordToCheck.lower()
-#     proper_noun = wordToCheck[0].upper() + wordToCheck[1:].lower()
-#     if proper_noun in wrd_lst:
-#         return proper_noun
-#     else:
-#         return "No Correction Found"

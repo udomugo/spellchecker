@@ -112,3 +112,6 @@ def test_extra_chars_MS8(words_spellcheck):
 
 def test_extra_chars_MS9(words_spellcheck):
     assert words_spellcheck.checkWord("MMiisssiisssiipppii") == "Mississippi"
+
+def test_garbage_imput(words_spellcheck):
+    assert words_spellcheck.checkWord("kas;djkhfaw;osuihjklsdh;flish;fgjkha;sojdhfblskjfhl;as") == "No Correction Found"
