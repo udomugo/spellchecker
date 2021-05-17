@@ -68,6 +68,47 @@ def test_properNoun(words_spellcheck):
 def test_no_corrections(words_spellcheck):
     assert words_spellcheck.checkWord("Jello") == "No Correction Found"
 
-def test_extra_chars(words_spellcheck):
+def test_checkDupChars(words_spellcheck):
+    assert words_spellcheck.checkDupChars("helllo")[0] == True
+
+def test_extra_chars_helllo(words_spellcheck):
     assert words_spellcheck.checkWord("helllo") == "hello"
 
+def test_noExtra_chars_parallel(words_spellcheck):
+    assert words_spellcheck.checkWord("parallel") == "parallel"
+
+def test_noExtra_chars_MS(words_spellcheck):
+    assert words_spellcheck.checkWord("Mississippi") == "Mississippi"
+
+def test_noExtra_chars_simple(words_spellcheck):
+    assert words_spellcheck.checkWord("I") == "I"
+
+def test_extra_chars_simple(words_spellcheck):
+    assert words_spellcheck.checkWord("II") == "I"
+
+def test_extra_chars_MS1(words_spellcheck):
+    assert words_spellcheck.checkWord("Miississippi") == "Mississippi"
+
+def test_extra_chars_MS2(words_spellcheck):
+    assert words_spellcheck.checkWord("Miissiissippi") == "Mississippi"
+
+def test_extra_chars_MS3(words_spellcheck):
+    assert words_spellcheck.checkWord("Miissiissiippi") == "Mississippi"
+
+def test_extra_chars_MS4(words_spellcheck):
+    assert words_spellcheck.checkWord("Miissiissiippii") == "Mississippi"
+
+def test_extra_chars_MS5(words_spellcheck):
+    assert words_spellcheck.checkWord("Miisssiissiippii") == "Mississippi"
+
+def test_extra_chars_MS6(words_spellcheck):
+    assert words_spellcheck.checkWord("Miisssiisssiippii") == "Mississippi"
+
+def test_extra_chars_MS7(words_spellcheck):
+    assert words_spellcheck.checkWord("Miisssiisssiipppii") == "Mississippi"
+
+def test_extra_chars_MS8(words_spellcheck):
+    assert words_spellcheck.checkWord("Mmiisssiisssiipppii") == "Mississippi"
+
+def test_extra_chars_MS9(words_spellcheck):
+    assert words_spellcheck.checkWord("MMiisssiisssiipppii") == "Mississippi"

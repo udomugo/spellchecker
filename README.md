@@ -48,5 +48,6 @@ Please send the source code in a ZIP file, or similar format. If you use any lib
 
 ### Running test suite:
 	At project root directory i.e. ':/>spellchecker-homework$' run pytest-3
-	Uncompressed words file should be placed in the 'wordfiles' folder in the root directory of the project.
+	
+	Uncompressed words file should be placed in 'wordfiles' folder of project directory.
 
