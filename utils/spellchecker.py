@@ -5,27 +5,45 @@ from pathlib import Path
 
 class Spellchecker():
 
-    def __init__(self, word_dict: str):
-        self.word_dict = word_dict
-        self.path = Path.cwd()
-        self.words = None
-        self.find_dictFile()
+    def __init__(self, wordFile: str=''):
+        self._path = None
+        self._words = None
+        self._wordList = None
+        self.wordList = wordFile
+        self.create_wordList()
 
-    # look for word dictionary
-    def find_dictFile(self):
+    # setter method for word list
+    def open_wordFile(self, wordFile):
         #search current dir
-        file = self.path / self.word_dict
-        if self.path.exists:
-            if not file.is_file():
-                raise WordFileNotFoundException("Word file " + self.word_dict + " can not be found")
-            self.words = open(file)
-            # try:
-            #     # if self.path.exists and file.is_file():
-            #     #     return open(file)
-            #     #subDir = self.path.
-            #     open(file)
-            # except FileNotFoundError as err:
-            #     print('Error: ', err)
+        self._path = Path.cwd()
+        wordfiles_path = self._path / 'wordfiles'
+        file = wordfiles_path / wordFile
+        if not file.is_file():
+            raise WordFileNotFoundException("Word file " + wordFile + " can not be found")
+        self._words = open(file)
+    
+    # create word list from file object
+    def create_wordList(self):
+        words_string = self._words.read()
+        self._wordList = words_string.splitlines()
+
+    # getter of word list
+    def view_wordList(self):
+        return self._wordList
+    
+    wordList = property(view_wordList, open_wordFile)
+
+    def checkWord(self, wordToCheck: str) -> str:
+        result = ''
+        if wordToCheck in self._wordList:
+            return wordToCheck
+        if wordToCheck.lower() in self._wordList:
+            return wordToCheck.lower()
+        proper_noun = wordToCheck[0].upper() + wordToCheck[1:].lower()
+        if proper_noun in self._wordList:
+            return proper_noun
+        else:
+            return "No Correction Found"
     
 class WordFileNotFoundException(Exception):
         ''' Exception raised when spellchecker can not find supplied word list '''
@@ -40,7 +58,7 @@ wrd_lst = dev_wrd_lst_short
 
 wrd_lst.sort()
 
-def checkWord(wordToCheck: str) -> str:
+def checkWord_prototype(wordToCheck: str) -> str:
     result = ''
     #lowerCase = wordToCheck.lower()
     if wordToCheck in wrd_lst:
