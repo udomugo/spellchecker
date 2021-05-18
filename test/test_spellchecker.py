@@ -12,19 +12,9 @@ except ImportError as err:
 projectRoot = Path(os.path.dirname(__file__)).parent
 
 @pytest.fixture
-def spamList():
-    spamList = open(projectRoot / 'wordfiles' / 'spam.txt')
-    return spamList.read()
-
-@pytest.fixture
 def wordsList():
     wordsList = open(projectRoot / 'wordfiles' / 'words')
     return wordsList.read()
-
-@pytest.fixture
-def spam_spellcheck():
-    spam_spellcheck = utils.Spellchecker('spam.txt')
-    return spam_spellcheck
 
 @pytest.fixture
 def words_spellcheck():
@@ -32,8 +22,6 @@ def words_spellcheck():
     return words_spellcheck
 
 # Testing pytest fixtures
-def test_spam_spellcheck(spam_spellcheck, spamList):
-    assert spam_spellcheck.wordList == spamList
 
 def test_words_spellcheck(words_spellcheck, wordsList):
     assert words_spellcheck.wordList == wordsList
@@ -48,13 +36,13 @@ def test_create_spellchecker_badFile():
 
 def test_create_spellchecker_fileExists():
     try:
-        utils.Spellchecker('spam.txt')
+        utils.Spellchecker('words')
     except Exception as e_info:
         assert False, f"'utils.Spellchecker' raised an exception {e_info}"
 
-def test_read_spellchecker_wordFile(spamList):
+def test_read_spellchecker_wordFile(wordsList):
     spcheck = utils.Spellchecker('spam.txt')
-    assert spcheck.wordList == spamList
+    assert spcheck.wordList == wordsList
 
 
 # Testing checkWord function

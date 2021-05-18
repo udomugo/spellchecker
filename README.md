@@ -47,13 +47,26 @@ Please send the source code in a ZIP file, or similar format. If you use any lib
 	* Additional chars need to be removed
 	* The following two cases are both true
 
-### Running test suite:
+### Setting up project
+Project was built with python 3.8.5 but should work for any version of python > 3.7
+
+Clone github repo:
+> :~/projects$ git clone https://github.com/udomugo/spellchecker.git
+
+Change to project directory and wordfiles directory:
+> :~/projects$ cd spellchecker<br>
+> :~/projects/spellchecker$ mkdir wordfiles
+
+Unzip compressed word list:
+> :~/projects/spellchecker$ gzip -dc words.gz > ./wordfiles/words
+
+Install pytest:
+> :~/projects/spellchecker$ pip install -U pytest
+
+### Running test suite
 At project root directory run command:
-> [USER]:~/projects/spellchecker-homework$ pytest-3 -v
-	
-The uncompressed **words** file should be placed in 'wordfiles' folder of project directory.
-> ~/projects/spellchecker-homework/wordfiles
+> :~/projects/spellchecker$ pytest-3 -v
 
 ### Running the CLI
-At project root directory run
-> [USER]:~/projects/spellchecker-homework$ python3 main.py
+At project root directory run command:
+> :~/projects/spellchecker$ python3 main.py
