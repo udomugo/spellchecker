@@ -31,11 +31,12 @@ If you have any questions, please let us know.
 Please send the source code in a ZIP file, or similar format. If you use any libraries, please ensure we can get the exact versions you used. Please tell us anything that you think we should know about compiling or using your code.
 
 
-## Planning - Cases to cover:
-	* When to Capitalize the first letter
-	* How to decide there are erroious additional characters
+## Planning:
+### Cases to cover:
+* When to Capitalize the first letter
+* How to decide there are additional characters
 
-### Planning - What to return (rough flow control):
+### What to return (rough flow control):
 * Correctly spelled words
 * Correctly spelled words, incorrect capitalization
 	* First char needs to be capitalized
@@ -47,7 +48,12 @@ Please send the source code in a ZIP file, or similar format. If you use any lib
 	* The following two cases are both true
 
 ### Running test suite:
-	At project root directory i.e. ':/>spellchecker-homework$' run pytest-3
+At project root directory run command:
+> [USER]:~/projects/spellchecker-homework$ pytest-3 -v
 	
-	Uncompressed words file should be placed in 'wordfiles' folder of project directory.
+The uncompressed **words** file should be placed in 'wordfiles' folder of project directory.
+> ~/projects/spellchecker-homework/wordfiles
 
+### Running the CLI
+At project root directory run
+> [USER]:~/projects/spellchecker-homework$ python3 main.py

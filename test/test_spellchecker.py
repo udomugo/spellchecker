@@ -1,20 +1,25 @@
-import importlib
-import pytest
+# built using pytest-4.6.9, py-1.8.1
+# pytest fixtures require that word list 'words' exist in '/projectRoot/wordfiles'
+import importlib, pytest, os
+
+from pathlib import Path
 
 try:
     utils = importlib.import_module('.spellchecker', package='utils')
 except ImportError as err:
     print('Error: ', err)
 
+projectRoot = Path(os.path.dirname(__file__)).parent
+
 @pytest.fixture
 def spamList():
-    spamList = open('wordfiles/spam.txt')
-    return spamList.read().splitlines()
+    spamList = open(projectRoot / 'wordfiles' / 'spam.txt')
+    return spamList.read()
 
 @pytest.fixture
 def wordsList():
-    wordsList = open('wordfiles/words')
-    return wordsList.read().splitlines()
+    wordsList = open(projectRoot / 'wordfiles' / 'words')
+    return wordsList.read()
 
 @pytest.fixture
 def spam_spellcheck():
@@ -86,6 +91,7 @@ def test_noExtra_chars_simple(words_spellcheck):
 def test_extra_chars_simple(words_spellcheck):
     assert words_spellcheck.checkWord("II") == "I"
 
+# Stress testing duplicate character detection
 def test_extra_chars_MS1(words_spellcheck):
     assert words_spellcheck.checkWord("Miississippi") == "Mississippi"
 
@@ -113,5 +119,5 @@ def test_extra_chars_MS8(words_spellcheck):
 def test_extra_chars_MS9(words_spellcheck):
     assert words_spellcheck.checkWord("MMiisssiisssiipppii") == "Mississippi"
 
-def test_garbage_imput(words_spellcheck):
+def test_garbage_input(words_spellcheck):
     assert words_spellcheck.checkWord("kas;djkhfaw;osuihjklsdh;flish;fgjkha;sojdhfblskjfhl;as") == "No Correction Found"
