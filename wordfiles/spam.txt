@@ -1,6 +1,0 @@
-hello
-world
-aaa
-bbb
-add
-Elvis
