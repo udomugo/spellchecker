@@ -1,4 +1,5 @@
 James Morren - Application Homework Submission
+# Ripl Spell-checker
 
 ## Planning:
 ### Cases to cover:
@@ -42,9 +43,8 @@ At project root directory run command:
 At project root directory run command:
 > :~/projects/spellchecker$ python3 main.py
 
-Spec:
-# Ripl Spell-checker
 
+## Spec:
 To complete the new Ripl spell-checking software, we need you to create its brain. The requirements for this version are listed below. If you have any questions about any part of the task, please let us know.
 
 ### Requirements
