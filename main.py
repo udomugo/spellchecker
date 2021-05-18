@@ -1,10 +1,9 @@
 import importlib
 from pathlib import Path
 
-utils = importlib.import_module('.spellchecker', package='utils')
-sc = utils.Spellchecker('words')
-
-def main_cli():    
+def main_cli():
+    utils = importlib.import_module('.spellchecker', package='utils')
+    sc = utils.Spellchecker('words')
     userInput = ''
     print("Welcome to CLI spellchecker.")
     while userInput != 'quit!':

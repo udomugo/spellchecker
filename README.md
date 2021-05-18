@@ -49,6 +49,8 @@ Please send the source code in a ZIP file, or similar format. If you use any lib
 
 ### Setting up project
 Project was built with python 3.8.5 but should work for any version of python > 3.7
+The following commands can be run all together if running in a fresh python environment:
+> :~/projects$ git clone https://github.com/udomugo/spellchecker.git && cd spellchecker && mkdir wordfiles && gzip -dc words.gz > ./wordfiles/words && pip install -U pytest
 
 Clone github repo:
 > :~/projects$ git clone https://github.com/udomugo/spellchecker.git

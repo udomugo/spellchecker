@@ -41,7 +41,7 @@ def test_create_spellchecker_fileExists():
         assert False, f"'utils.Spellchecker' raised an exception {e_info}"
 
 def test_read_spellchecker_wordFile(wordsList):
-    spcheck = utils.Spellchecker('spam.txt')
+    spcheck = utils.Spellchecker('words')
     assert spcheck.wordList == wordsList
 
 
