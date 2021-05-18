@@ -43,9 +43,9 @@ Please send the source code in a ZIP file, or similar format. If you use any lib
 	* Any char following the first char needs to be lower case
 	* The following two cases are both true
 * Incorrectly spelled words:
-	* Missing chars need to be added
 	* Additional chars need to be removed
-	* The following two cases are both true
+* Stretch Goal:
+	* Missing chars need to be added
 
 ### Setting up project
 Project was built with python 3.8.5 but should work for any version of python > 3.7
